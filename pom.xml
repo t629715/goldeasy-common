@@ -45,12 +45,7 @@
 			<version>${mapper.version}</version>
 		</dependency>
 	</dependencies>
-	<!--分页插件 -->
-	<dependency>
-		<groupId>com.github.pagehelper</groupId>
-		<artifactId>pagehelper</artifactId>
-		<version>${pagehelper.version}</version>
-	</dependency>
+
 
 
 	<build>
