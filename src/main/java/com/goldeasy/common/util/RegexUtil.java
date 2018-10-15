@@ -11,19 +11,7 @@ import java.util.regex.Pattern;
 public final class RegexUtil {
     /**静态类无需创建对象*/
     private RegexUtil(){}
-    /**
-     * @param telephoneNumber 需要验证的电话号码
-     * @return 返回类型 boolean; true:验证正确; false:验证错误
-     * @author 武佳楠-郑州
-     * @date 2017年11月13日 上午11:17:37
-     * @Description: 验证电话号码
-     */
-    public static boolean isTelephone(String telephoneNumber) {
-        String phoneNumberFormat = "0\\d{2,3}-\\d{7,8}";
-        Pattern p = Pattern.compile(phoneNumberFormat);
-        Matcher m = p.matcher(telephoneNumber);
-        return m.matches();
-    }
+
 
     /**
      * @param mobileNumber 手机号
@@ -33,7 +21,9 @@ public final class RegexUtil {
      * @Description 验证手机号
      */
     public static boolean isMobileNumber(String mobileNumber) {
-        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+        // "[1]"代表第1位为数字1，"[358]"代表第二位可以为3、5、8中的一个，"\\d{9}"代表后面是可以是0～9的数字，有9位
+        String phone = "^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";
+        Pattern p = Pattern.compile(phone);
         Matcher m = p.matcher(mobileNumber);
         return m.matches();
     }
@@ -51,68 +41,6 @@ public final class RegexUtil {
         Matcher m = p.matcher(email);
         return m.matches();
     }
-
-    /**
-     * @param checkDate 需要验证的日期,参数传入格式:yyyy-mm-dd
-     * @return 返回boolean类型, true:是日期; false:不是日期
-     * @author 武佳楠-郑州
-     * @date 2017年11月13日 上午11:03:17
-     * @Description: 验证日期
-     */
-    public static boolean isDate(String checkDate) {
-        String datePattern1 = "\\d{4}-\\d{2}-\\d{2}";
-        String datePattern2 = "^((\\d{2}(([02468][048])|([13579][26]))"
-                + "[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|"
-                + "(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?"
-                + "((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?("
-                + "(((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?"
-                + "((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))";
-        if ((checkDate != null)) {
-            Pattern pattern = Pattern.compile(datePattern1);
-            Matcher match = pattern.matcher(checkDate);
-            if (match.matches()) {
-                pattern = Pattern.compile(datePattern2);
-                match = pattern.matcher(checkDate);
-                return match.matches();
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * @param checkDateTime 日期时间格式yyyy-MM-dd HH:mm:ss
-     * @return 返回boolean类型, true:是日期; false:不是日期
-     * @author 武佳楠
-     * @date 2017年11月13日下午5:14:15
-     * @Description
-     */
-    public static boolean isDateTime(String checkDateTime) {
-        // 验证是不是日期 表达式
-        String datePattern1 = "\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}";
-        // 验证日期正不正确 表达式
-        String datePattern2 = "^((\\d{2}(([02468][048])|([13579][26]))"
-                + "[\\-\\/\\s]?((((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|"
-                + "(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?"
-                + "((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-\\/\\s]?("
-                + "(((0?[13578])|(1[02]))[\\-\\/\\s]?((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-\\/\\s]?"
-                + "((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-\\/\\s]?((0?[1-9])|(1[0-9])|(2[0-8]))))))"
-                + "\\s([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]";
-        if ((checkDateTime != null)) {
-            Pattern pattern = Pattern.compile(datePattern1);
-            Matcher match = pattern.matcher(checkDateTime);
-            if (match.matches()) {
-                pattern = Pattern.compile(datePattern2);
-                match = pattern.matcher(checkDateTime);
-                return match.matches();
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
-
 
 
     /**
