@@ -13,8 +13,13 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 import java.util.Properties;
 
 
-/**
- * Created by Administrator on 2018/1/8.
+/*
+ * @Author: Mr.wu
+ * @Description: 扫dao接口及分页主键配置
+ * @Date: 2018/10/15 17:31
+ * @param: null
+ * @return:
+ * @Version: 1.0
  */
 @Configuration
 public class MyMapperScannerConfigurer {
@@ -39,14 +44,5 @@ public class MyMapperScannerConfigurer {
         pageHelper.setProperties(properties);
         return pageHelper;
     }
-
-
-
-//    @Bean
-//    public SqlSessionFactory sqlSessionFactory() throws Exception {
-//        SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-//        sessionFactory.setDataSource(dataSource);
-//        return sessionFactory.getObject();
-//    }
-
+    
 }
