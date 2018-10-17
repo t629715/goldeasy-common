@@ -12,9 +12,10 @@ import java.security.NoSuchAlgorithmException;
 * @date 2017年8月1日 下午3:34:42 
 *
  */
-public class MD5Util {
+public final class MD5Util {
 	private static String salt = "ggsimida";
-	
+
+	private MD5Util(){}
 	/**
 	 * 
 	 * @Description: TODO(这里用一句话描述这个方法的作用) 
