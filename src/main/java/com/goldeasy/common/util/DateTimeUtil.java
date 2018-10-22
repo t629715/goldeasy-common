@@ -36,4 +36,15 @@ public class DateTimeUtil {
     public static LocalDateTime toLocalDateTime(Date date){
        return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }
+
+    /**
+     * 当前日期加day天
+     * @param day
+     * @return
+     */
+    public static String addDay(Long day){
+      return   LocalDate.now().plusDays(day).toString();
+    }
+
+
 }
