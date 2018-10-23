@@ -5,6 +5,9 @@ import com.goldeasy.common.redis.RedisService;
 import com.goldeasy.common.util.MoneyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,7 @@ import java.math.BigDecimal;
  * @Description :
  */
 @Component
+@PropertySource({"classpath:common.properties"})
 public final class MarketUtil {
 
     @Resource
