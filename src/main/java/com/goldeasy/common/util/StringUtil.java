@@ -24,6 +24,17 @@ public final class StringUtil {
         Collections.addAll(list,split);
         return list;
     }
+    public static List<Integer> getDataListInteger(String str){
+        if (str==null){
+            return null;
+        }
+        List<Integer> list = new ArrayList<>();
+        String[] split = str.split(",");
+        for (String st:split) {
+            list.add(Integer.valueOf(st));
+        }
+        return list;
+    }
 
     public static String[] getDataArray(String str){
         if (str==null){

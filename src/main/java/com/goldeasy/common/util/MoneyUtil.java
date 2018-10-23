@@ -145,6 +145,9 @@ public final class MoneyUtil {
         return b1.multiply(b2).setScale(scale, BigDecimal.ROUND_UP);
     }
 
+    public static BigDecimal multiplyRoundUp(BigDecimal b1, Integer b2, int scale) {
+        return b1.multiply(new BigDecimal(b2)).setScale(scale, BigDecimal.ROUND_UP);
+    }
     public static BigDecimal multiplyRoundUp(Double b1, Double b2, int scale) {
         BigDecimal bd1 = new BigDecimal(b1 + "");
         BigDecimal bd2 = new BigDecimal(b2 + "");
