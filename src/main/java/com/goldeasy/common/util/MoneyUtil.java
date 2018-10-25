@@ -23,7 +23,7 @@ public final class MoneyUtil {
      * @Version: 1.0
      */
     public static BigDecimal yuanToFen(BigDecimal yuan) {
-        return yuan.multiply(new BigDecimal(100)).setScale(0);
+        return yuan.multiply(new BigDecimal(100 + "")).setScale(0);
     }
 
     public static BigDecimal yuanToFen(String yuan) {
@@ -48,7 +48,7 @@ public final class MoneyUtil {
      * @Version: 1.0
      */
     public static BigDecimal fenToYuan(BigDecimal fen) {
-        return fen.divide(new BigDecimal(100));
+        return fen.divide(new BigDecimal(100 + ""));
     }
 
     public static BigDecimal fenToYuan(String fen) {
@@ -145,6 +145,9 @@ public final class MoneyUtil {
         return b1.multiply(b2).setScale(scale, BigDecimal.ROUND_UP);
     }
 
+    public static BigDecimal multiplyRoundUp(BigDecimal b1, Integer b2, int scale) {
+        return b1.multiply(new BigDecimal(b2)).setScale(scale, BigDecimal.ROUND_UP);
+    }
     public static BigDecimal multiplyRoundUp(Double b1, Double b2, int scale) {
         BigDecimal bd1 = new BigDecimal(b1 + "");
         BigDecimal bd2 = new BigDecimal(b2 + "");
