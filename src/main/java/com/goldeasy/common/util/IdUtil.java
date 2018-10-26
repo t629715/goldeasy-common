@@ -20,7 +20,7 @@ public class IdUtil {
                 + localDateTime.getMinute() * 10000000l
                 + localDateTime.getSecond() * 100000
                 + Instant.now().toEpochMilli() * 100
-                + (int)(Math.random() * 100);
+                + (int)(Math.random() * 1000);
         return String.valueOf(idNum);
     }
 
