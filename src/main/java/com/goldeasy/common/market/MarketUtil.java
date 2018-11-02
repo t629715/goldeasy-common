@@ -35,10 +35,19 @@ public final class MarketUtil {
         String marketStr = redisService.get(goldLatestMarket);
         return JSON.parseObject(marketStr, Market.class);
     }
-
+    /*实时价格*/
     public BigDecimal getNowPriceAddValue(BigDecimal value) {
         Market market = this.getMarket();
         BigDecimal nowPrice = MoneyUtil.yuanToFen(market.getPrice());
-        return MoneyUtil.addRoundDown(value,nowPrice,2);
+        return MoneyUtil.addRoundUp(value,nowPrice,0);
     }
+    /*昨收价格*/
+    public BigDecimal getPrePriceAddValue(BigDecimal value) {
+        Market market = this.getMarket();
+        BigDecimal nowPrice = MoneyUtil.yuanToFen(market.getPrevClosePx());
+        return MoneyUtil.addRoundUp(value,nowPrice,0);
+    }
+
+
+
 }
