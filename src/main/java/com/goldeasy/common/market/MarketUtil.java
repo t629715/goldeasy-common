@@ -28,6 +28,9 @@ public final class MarketUtil {
 
     @Value("${gold.latest.market}")
     private String goldLatestMarket;
+    @Value("${gold.market.rediskey}")
+    private static String goldRightDealStatus;
+
 
 
 
@@ -48,6 +51,20 @@ public final class MarketUtil {
         return MoneyUtil.addRoundUp(value,nowPrice,0);
     }
 
+    /**
+     * 判断是否是开闭市，中控服务器中存放了该信息
+     *
+     * @param productId
+     * @return
+     */
+    public  Boolean getCanBuy(Long productId) {
+        String status = String.valueOf( redisService.get(goldRightDealStatus + "_" + productId));
+        if (Integer.parseInt(status) == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 }
