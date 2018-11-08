@@ -8,6 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 
@@ -19,6 +22,25 @@ import java.util.Map;
 @Component
 public class SfServiceImpl {
     private final Logger logger = LoggerFactory.getLogger(SfServiceImpl.class);
+
+    /**
+     * 顺丰下单返回的head
+     */
+    private final String SF_RES_HEAD_OK = "OK";
+    /**
+     * 商户号
+     */
+    private String SF_CLIENT_CODE = "SF_CLIENT_CODE";
+    /**
+     *  验证码
+     */
+    private String SF_CHECK_WORD = "SF_CHECK_WORD";
+    /**
+     * 月结卡卡号id
+     */
+    private String SF_REQ_URL = "SF_REQ_URL";
+
+
     /**
      * 商户号
      */
@@ -91,5 +113,21 @@ public class SfServiceImpl {
         XmlConvert xmlConvert = new XmlConvert(SfExpressResponse.class);
         SfExpressResponse sfExpressResponse = (SfExpressResponse) xmlConvert.unmarshal(xmlStr);
         return sfExpressResponse;
+    }
+    public List getRouter(String mailNo){
+        SfExpressResponse sfExpressResponse = this.queryRouter(mailNo);
+        List tempRouter = new ArrayList();
+        if (sfExpressResponse != null){
+            if (this.SF_RES_HEAD_OK.equals(sfExpressResponse.getHead())){
+                if (sfExpressResponse.getBody() != null){
+                    if (sfExpressResponse.getBody().getRouteResponse() != null){
+                        tempRouter = sfExpressResponse.getBody().getRouteResponse().getRoute();
+                        Collections.reverse(tempRouter);
+                        return tempRouter;
+                    }
+                }
+            }
+        }
+        return tempRouter;
     }
 }

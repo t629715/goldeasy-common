@@ -75,6 +75,10 @@ public final class MoneyUtil {
         BigDecimal bd2 = new BigDecimal(b2 + "");
         return multiplyRoundDown(bd1, bd2, scale);
     }
+    public static BigDecimal multiplyRoundDown(int b1, BigDecimal b2, int scale) {
+        BigDecimal bd1 = new BigDecimal(b1 + "");
+        return multiplyRoundDown(bd1, b2, scale);
+    }
 
     public static BigDecimal multiplyRoundDown(BigDecimal b1, Double b2, int scale) {
         BigDecimal bd2 = new BigDecimal(b2 + "");
