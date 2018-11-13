@@ -46,5 +46,13 @@ public class DateTimeUtil {
       return   LocalDate.now().plusDays(day).toString();
     }
 
-
+    /**
+     * 当前日期加day天
+     * @param day
+     * @return
+     */
+    public static Date addDayReturnDate(Long day){
+        return   toDate(LocalDate.now().plusDays(day));
+    }
+    
 }
